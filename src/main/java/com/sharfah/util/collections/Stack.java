@@ -43,6 +43,7 @@ public class Stack<E> {
   /**
    * Remove the top item from the stack.
    * @return the top of the stack
+   * @throws NoSuchElementException if the stack is empty
    */
   public E pop() {
     if (isEmpty()) {
@@ -56,6 +57,7 @@ public class Stack<E> {
   /**
    * Return the top of the stack but do not remove it.
    * @return the top of the stack
+   * @throws NoSuchElementException if the stack is empty
    */
   public E peek() {
     if (isEmpty()) {
