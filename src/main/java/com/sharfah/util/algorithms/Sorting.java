@@ -158,4 +158,77 @@ public class Sorting {
       arr[k++] = helper[i++];
     }
   }
+
+  /**
+   * Quick Sort.
+   * <p>
+   * The steps are:
+   * <ol>
+   * <li>Pick an element, called a pivot, from the array.
+   * <li>Move elements < pivot before the pivot and those > pivot, after it
+   * <li>Repeat recursively to the sub-array less than the pivot and to the sub-array after the pivot
+   * </ol>
+   * <li>Runtime (average and best): O(n log n)
+   * <li>Worst runtime: O(n^2)
+   * <li>Memory: O(log n)
+   * @param <E>
+   * @param arr the array to sort
+   */
+  public static <E extends Comparable<E>> void quickSort(final E[] arr) {
+    quickSort(arr, 0, arr.length - 1);
+  }
+
+  private static <E extends Comparable<E>> void quickSort(final E[] arr, final int start, final int end) {
+    final int p = partition(arr, start, end);
+    if (start < p - 1) { // sort left half
+      quickSort(arr, start, p - 1);
+    }
+    if (p < end) { // sort right half
+      quickSort(arr, p, end);
+    }
+  }
+
+  /**
+   * Partitioning: reorder the array so that all elements with values less than
+   * the pivot come before the pivot, while all elements with values greater
+   * than the pivot come after it (equal values can go either way). After this
+   * partitioning, the pivot is in its final position.
+   * <p>
+   * Hoare partition scheme: Uses two indices that start at the ends of the array being partitioned,
+   * then move toward each other, until they detect an inversion. Swap the inverted elements.
+   * @param <E>
+   * @param arr
+   * @param start
+   * @param end
+   * @return the pivot position
+   */
+  private static <E extends Comparable<E>> int partition(final E[] arr, int start, int end) {
+    // Pick the pivot:
+    // Worst case is if the pivot is the smallest or largest element in the array,
+    // which will lead to one partition having size 0, giving O(n^2) runtime.
+    // It's better to pick a random index, or the middle index, of the median of the first, middle and last elements.
+    final E pivot = arr[start + (end - start) / 2]; // could do (start + end)/2 but that could cause integer overflow
+
+    while (start <= end) {
+      // find element on the left that should be on the right
+      while (arr[start].compareTo(pivot) < 0) {
+        start++;
+      }
+
+      // find element on the right that should be on the left
+      while (arr[end].compareTo(pivot) > 0) {
+        end--;
+      }
+
+      // swap the elements
+      if (start <= end) {
+        final E tmp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = tmp;
+        start++;
+        end--;
+      }
+    }
+    return start;
+  }
 }
