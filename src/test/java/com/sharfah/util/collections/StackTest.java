@@ -1,11 +1,12 @@
 package com.sharfah.util.collections;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.NoSuchElementException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StackTest {
 
@@ -31,9 +32,11 @@ public class StackTest {
     assertThat(stack.pop(), is("foo"));
   }
 
-  @Test(expected = NoSuchElementException.class)
+  @Test
   public void testPopOnEmptyStack() {
-    new Stack<>().pop();
+    assertThrows(NoSuchElementException.class, () -> {
+      new Stack<>().pop();
+    });
   }
 
   @Test
@@ -45,9 +48,11 @@ public class StackTest {
     assertThat(stack.peek(), is("bar"));
   }
 
-  @Test(expected = NoSuchElementException.class)
+  @Test
   public void testPeekOnEmptyStack() {
-    new Stack<>().peek();
+    assertThrows(NoSuchElementException.class, () -> {
+      new Stack<>().peek();
+    });
   }
 
   @Test

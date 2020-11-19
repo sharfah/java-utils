@@ -1,11 +1,12 @@
 package com.sharfah.util.sql;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 import java.io.ByteArrayOutputStream;
 import java.sql.SQLException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StreamingCsvResultSetExtractorTest {
 

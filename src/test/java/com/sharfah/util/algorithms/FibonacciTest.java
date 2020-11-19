@@ -1,10 +1,10 @@
 package com.sharfah.util.algorithms;
 
 import static com.sharfah.util.algorithms.Fibonacci.*;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class FibonacciTest {
 

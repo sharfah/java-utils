@@ -1,11 +1,12 @@
 package com.sharfah.util.collections;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.NoSuchElementException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class QueueTest {
 
@@ -30,9 +31,11 @@ public class QueueTest {
     assertTrue(queue.isEmpty());
   }
 
-  @Test(expected = NoSuchElementException.class)
+  @Test
   public void testRemoveOnEmptyQueue() {
-    new Queue<>().remove();
+    assertThrows(NoSuchElementException.class, () -> {
+      new Queue<>().remove();
+    });
   }
 
   @Test
@@ -44,9 +47,11 @@ public class QueueTest {
     assertThat(queue.peek(), is("foo"));
   }
 
-  @Test(expected = NoSuchElementException.class)
+  @Test
   public void testPeekOnEmptyQueue() {
-    new Queue<>().peek();
+    assertThrows(NoSuchElementException.class, () -> {
+      new Queue<>().peek();
+    });
   }
 
   @Test

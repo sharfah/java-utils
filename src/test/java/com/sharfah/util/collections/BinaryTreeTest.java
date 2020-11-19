@@ -1,15 +1,15 @@
 package com.sharfah.util.collections;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class BinaryTreeTest {
 
@@ -20,8 +20,7 @@ public class BinaryTreeTest {
   BinaryTreeNode<Integer> n22;
   BinaryTreeNode<Integer> n23;
 
-
-  @Before
+  @BeforeEach
   public void setUp() {
     root = new BinaryTreeNode<>(8);
     n11 = new BinaryTreeNode<>(4);

@@ -1,11 +1,12 @@
 package com.sharfah.util.collections;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.NoSuchElementException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StacksTest {
 
@@ -22,10 +23,12 @@ public class StacksTest {
     assertThat(stack.isEmpty(), is(true));
   }
 
-  @Test (expected = NoSuchElementException.class)
+  @Test
   public void testMinThrowsExceptionOnEmptyStack() {
     final Stack<String> stack = new Stack<>();
-    Stacks.min(stack);
+    assertThrows(NoSuchElementException.class, () -> {
+      Stacks.min(stack);
+    });
   }
 
   @Test

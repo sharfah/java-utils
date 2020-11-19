@@ -1,9 +1,10 @@
 package com.sharfah.util.hamcrest;
 
-import static com.sharfah.util.hamcrest.IsEqualJSON.equalToJSON;
-import static org.junit.Assert.assertThat;
+import static com.sharfah.util.hamcrest.IsEqualJSON.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class IsEqualJSONTest {
 
@@ -12,8 +13,10 @@ public class IsEqualJSONTest {
     assertThat(new String[] { "foo", "bar" }, equalToJSON("[\"foo\", \"bar\"]"));
   }
 
-  @Test(expected = AssertionError.class)
+  @Test
   public void testFailure() {
-    assertThat(new String[] { "foo", "bar" }, equalToJSON("[\"foo2\", \"bar\"]"));
+    assertThrows(AssertionError.class, () -> {
+      assertThat(new String[] { "foo", "bar" }, equalToJSON("[\"foo2\", \"bar\"]"));
+    });
   }
 }

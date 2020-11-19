@@ -1,6 +1,6 @@
 package com.sharfah.util.sql;
 
-import static org.mockito.Matchers.*;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 import java.sql.ResultSet;
@@ -45,34 +45,34 @@ public class MockResultSet {
 
     // mock rs.getString(columnName)
     doAnswer(invocation -> {
-      final var columnName = invocation.getArgumentAt(0, String.class);
+      final var columnName = invocation.getArgument(0, String.class);
       final var columnIndex = columnIndices.get(columnName);
       return (String) data[rowIndex][columnIndex];
     }).when(rs).getString(anyString());
 
     // mock rs.getString(columnIndex)
     doAnswer(invocation -> {
-      final var index = invocation.getArgumentAt(0, Integer.class);
+      final var index = invocation.getArgument(0, Integer.class);
       return (String)data[rowIndex][index - 1];
     }).when(rs).getString(anyInt());
 
     // mock rs.getInt(columnName)
     doAnswer(invocation -> {
-      final var columnName = invocation.getArgumentAt(0, String.class);
+      final var columnName = invocation.getArgument(0, String.class);
       final var columnIndex = columnIndices.get(columnName);
       return (Integer) data[rowIndex][columnIndex];
     }).when(rs).getInt(anyString());
 
     // mock rs.getObject(columnName)
     doAnswer(invocation -> {
-      final var columnName = invocation.getArgumentAt(0, String.class);
+      final var columnName = invocation.getArgument(0, String.class);
       final var columnIndex = columnIndices.get(columnName);
       return data[rowIndex][columnIndex];
     }).when(rs).getObject(anyString());
 
     // mock rs.getObject(columnIndex)
     doAnswer(invocation -> {
-      final var index = invocation.getArgumentAt(0, Integer.class);
+      final var index = invocation.getArgument(0, Integer.class);
       return data[rowIndex][index - 1];
     }).when(rs).getObject(anyInt());
 
@@ -83,7 +83,7 @@ public class MockResultSet {
 
     // mock rsmd.getColumnName(int)
     doAnswer(invocation -> {
-      final var index = invocation.getArgumentAt(0, Integer.class);
+      final var index = invocation.getArgument(0, Integer.class);
       return columnIndices.keySet().stream().skip(index - 1).findFirst().get();
     }).when(rsmd).getColumnName(anyInt());
 

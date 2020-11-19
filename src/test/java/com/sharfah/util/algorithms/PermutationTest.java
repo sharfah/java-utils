@@ -1,12 +1,12 @@
 package com.sharfah.util.algorithms;
 
 import static com.sharfah.util.algorithms.Permutation.*;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 import java.util.Arrays;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 public class PermutationTest {
 
   @Test

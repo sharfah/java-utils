@@ -1,20 +1,20 @@
 package com.sharfah.util.sql;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class MockResultSetTest {
 
   private ResultSet rs;
   private ResultSet emptyRs;
 
-  @Before
+  @BeforeEach
   public void setUp() throws SQLException {
     rs = MockResultSet.create(new String[] { "name", "age" },
         new Object[][] {

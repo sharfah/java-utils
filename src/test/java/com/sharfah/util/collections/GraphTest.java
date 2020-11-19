@@ -1,21 +1,21 @@
 package com.sharfah.util.collections;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class GraphTest {
   GraphNode<Integer> root;
   GraphNode<Integer> two;
   GraphNode<Integer> five;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     root = new GraphNode<>(0);
     final GraphNode<Integer> one = root.addChild(1);

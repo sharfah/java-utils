@@ -1,12 +1,12 @@
 package com.sharfah.util.sql;
 
 import static com.sharfah.util.hamcrest.IsEqualJSON.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.sql.SQLException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StreamingJsonResultSetExtractorTest {
 

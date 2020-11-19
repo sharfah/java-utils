@@ -1,9 +1,16 @@
 package com.sharfah.util.hamcrest;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
-import org.hamcrest.*;
-import org.skyscreamer.jsonassert.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.hamcrest.Description;
+import org.hamcrest.DiagnosingMatcher;
+import org.skyscreamer.jsonassert.JSONCompare;
+import org.skyscreamer.jsonassert.JSONCompareMode;
+import org.skyscreamer.jsonassert.JSONCompareResult;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -90,7 +97,6 @@ public class IsEqualJSON extends DiagnosingMatcher<Object> {
    * @param expectedJSON the expected JSON string
    * @return the JSON matcher
    */
-  @Factory
   public static IsEqualJSON equalToJSON(final String expectedJSON) {
     return new IsEqualJSON(expectedJSON);
   }
@@ -107,7 +113,6 @@ public class IsEqualJSON extends DiagnosingMatcher<Object> {
    * @param expectedJSON the path containing the expected JSON
    * @return the JSON matcher
    */
-  @Factory
   public static IsEqualJSON equalToJSONInFile(final Path expectedPath) {
     return equalToJSON(getFileContents(expectedPath));
   }
@@ -124,7 +129,6 @@ public class IsEqualJSON extends DiagnosingMatcher<Object> {
    * @param expectedJSON the name of the file containing the expected JSON
    * @return the JSON matcher
    */
-  @Factory
   public static IsEqualJSON equalToJSONInFile(final String expectedFileName) {
     return equalToJSONInFile(Paths.get(expectedFileName));
   }
